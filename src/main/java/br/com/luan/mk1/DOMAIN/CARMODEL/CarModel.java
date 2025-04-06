@@ -1,8 +1,10 @@
-package br.com.luan.mk1.DOMAIN;
+package br.com.luan.mk1.DOMAIN.CARMODEL;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.luan.mk1.DOMAIN.BRAND.Brand;
+import br.com.luan.mk1.DOMAIN.CARUNIT.CarUnit;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

@@ -1,6 +1,9 @@
-package br.com.luan.mk1.DOMAIN;
+package br.com.luan.mk1.DOMAIN.BRAND;
 
 import java.util.List;
+
+import br.com.luan.mk1.DOMAIN.CARMODEL.CarModel;
+
 import java.util.ArrayList;
 
 import jakarta.persistence.*;

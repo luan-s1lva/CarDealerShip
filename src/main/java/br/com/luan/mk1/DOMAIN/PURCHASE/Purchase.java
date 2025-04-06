@@ -1,7 +1,9 @@
-package br.com.luan.mk1.DOMAIN;
+package br.com.luan.mk1.DOMAIN.PURCHASE;
 
 import java.util.Date;
 
+import br.com.luan.mk1.DOMAIN.CARUNIT.CarUnit;
+import br.com.luan.mk1.DOMAIN.CUSTOMER.Customer;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

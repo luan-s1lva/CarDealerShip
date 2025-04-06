@@ -1,5 +1,7 @@
-package br.com.luan.mk1.DOMAIN;
+package br.com.luan.mk1.DOMAIN.CARUNIT;
 
+import br.com.luan.mk1.DOMAIN.CARMODEL.CarModel;
+import br.com.luan.mk1.DOMAIN.PURCHASE.Purchase;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
