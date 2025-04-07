@@ -3,52 +3,76 @@ package br.com.luan.mk1.APPLICATION.DTO;
 public class SearchCarUnitDTO {
 
 	private Long carUnitId;
-	private Double  price;
+	private Double minPrice;
+	private Double maxPrice;
 	private String color;
-	private Integer year;
-	private Boolean status;
+	private Integer minYear;
+	private Integer maxYear;
+	private Boolean isAvailable;
 	
 	public SearchCarUnitDTO() {}
-	
-	public SearchCarUnitDTO(Long carUnitId, double price, String color, int year, boolean status) {
-		super();
+
+	public SearchCarUnitDTO(Long carUnitId, Double minPrice, Double maxPrice, String color, Integer minYear,
+			Integer maxYear, Boolean isAvailable) {
 		this.carUnitId = carUnitId;
-		this.price = price;
+		this.minPrice = minPrice;
+		this.maxPrice = maxPrice;
 		this.color = color;
-		this.year = year;
-		this.status = status;
+		this.minYear = minYear;
+		this.maxYear = maxYear;
+		this.isAvailable = isAvailable;
 	}
-	
+
 	public Long getCarUnitId() {
 		return carUnitId;
 	}
-	public void setCarUnitId(Long carUnitId) {
-		this.carUnitId = carUnitId;
+
+	public Double getMinPrice() {
+		return minPrice;
 	}
-	public double getPrice() {
-		return price;
+
+	public void setMinPrice(Double minPrice) {
+		this.minPrice = minPrice;
 	}
-	public void setPrice(double price) {
-		this.price = price;
+
+	public Double getMaxPrice() {
+		return maxPrice;
 	}
+
+	public void setMaxPrice(Double maxPrice) {
+		this.maxPrice = maxPrice;
+	}
+
 	public String getColor() {
 		return color;
 	}
+
 	public void setColor(String color) {
 		this.color = color;
 	}
-	public int getYear() {
-		return year;
+
+	public Integer getMinYear() {
+		return minYear;
 	}
-	public void setYear(int year) {
-		this.year = year;
+
+	public void setMinYear(Integer minYear) {
+		this.minYear = minYear;
 	}
-	public boolean isStatus() {
-		return status;
+
+	public Integer getMaxYear() {
+		return maxYear;
 	}
-	public void setStatus(boolean status) {
-		this.status = status;
+
+	public void setMaxYear(Integer maxYear) {
+		this.maxYear = maxYear;
 	}
-	
-	
+
+	public Boolean getIsAvailable() {
+		return isAvailable;
+	}
+
+	public void setIsAvailable(Boolean isAvailable) {
+		this.isAvailable = isAvailable;
+	}
+		
 }

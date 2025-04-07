@@ -2,11 +2,13 @@ package br.com.luan.mk1.DOMAIN.CARUNIT;
 
 import java.util.List;
 
+import br.com.luan.mk1.APPLICATION.DTO.SearchCarUnitDTO;
+
 public interface CarUnitRepository {
 
 	List<CarUnit> retrieveAll();
 	
-	List<CarUnit> retrieveByFilter(Long carUnitId, String color, Integer year, Boolean status, Double price);
+	List<CarUnit> retrieveByFilter(SearchCarUnitDTO searchCarUnitDTO);
 	
 	CarUnit save(CarUnit carUnit);
 	
