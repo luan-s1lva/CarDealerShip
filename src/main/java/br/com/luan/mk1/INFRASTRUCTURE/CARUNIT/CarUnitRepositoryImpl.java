@@ -3,10 +3,13 @@ package br.com.luan.mk1.INFRASTRUCTURE.CARUNIT;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.stereotype.Repository;
+
 import br.com.luan.mk1.APPLICATION.DTO.SearchCarUnitDTO;
 import br.com.luan.mk1.DOMAIN.CARUNIT.CarUnit;
 import br.com.luan.mk1.DOMAIN.CARUNIT.CarUnitRepository;
 
+@Repository
 public class CarUnitRepositoryImpl implements CarUnitRepository{
 
 	private final JpaCarUnitRepository jpaCarUnitRepo;

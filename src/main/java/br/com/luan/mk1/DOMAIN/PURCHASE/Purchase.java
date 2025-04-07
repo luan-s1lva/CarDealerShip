@@ -26,7 +26,7 @@ public class Purchase {
 	private CarUnit carUnit;
 	
 	@ManyToOne(optional = false)
-	@JoinColumn(name = "csutomer_id",nullable = false)
+	@JoinColumn(name = "customer_id",nullable = false)
 	private Customer customer;
 	
 	@Column(nullable = false)

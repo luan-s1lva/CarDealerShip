@@ -1,6 +1,7 @@
 package br.com.luan.mk1.APPLICATION.CARUNIT.IMPL;
 
 import java.util.Date;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -29,15 +30,19 @@ public class PurchaseCarUnitService implements PurchaseCarUnit {
 
 	@Override
 	public boolean purchaseCarUnit(Long customerId, Long carUnitId) {
-		Customer customer = customerRepository.retrieveById(customerId);
-		SearchCarUnitDTO searchCarUnitDTO = new SearchCarUnitDTO(carUnitId,null,null,null,null,null,null);
+		Optional<Customer> cust = customerRepository.retrieveById(customerId);
 		
-		if ((carUnitRepository.retrieveByFilter(searchCarUnitDTO)).size() == 1) {
-			CarUnit carUnit = (CarUnit) carUnitRepository.retrieveByFilter(searchCarUnitDTO);
-			Purchase purchase = new Purchase(carUnit,customer,new Date());
+		if (cust.isPresent() == true) { 
+			Customer customer = cust.get();	
+			SearchCarUnitDTO searchCarUnitDTO = new SearchCarUnitDTO(carUnitId,null,null,null,null,null,null);
 			
-			purchaseRepository.save(purchase);
-			return true;
+			if ((carUnitRepository.retrieveByFilter(searchCarUnitDTO)).size() == 1) {
+				CarUnit carUnit = (CarUnit) carUnitRepository.retrieveByFilter(searchCarUnitDTO);
+				Purchase purchase = new Purchase(carUnit,customer,new Date());
+				
+				purchaseRepository.save(purchase);
+				return true;
+			}
 		}
 		
 		return false;
