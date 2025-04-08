@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro de Brand</title>
+</head>
+<body>
+    <h1>Atualizar Brand</h1>
+    <form action="/brand/update" method="post">
+		<input type="hidden" name="_method" value="put" />
+		
+		ID da brand: <input type="number" name="brandId"><br>
+        Nome da brand: <input type="text" name="name"><br>
+        <button type="submit">Enviar</button>
+    </form>
+</body>
+</html>

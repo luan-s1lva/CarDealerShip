@@ -2,8 +2,10 @@ package br.com.luan.mk1;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.filter.HiddenHttpMethodFilter;
 
 @SpringBootApplication
 @RestController
@@ -14,6 +16,12 @@ public class Dealership {
 
 	@GetMapping("/home")
 	public String hello() {
-		return String.format("Hello Luan", null);
+		return "Hello Luan";
 	}
+	
+	@Bean
+	public HiddenHttpMethodFilter hiddenHttpMethodFilter() {
+	    return new HiddenHttpMethodFilter();
+	}
+
 }
