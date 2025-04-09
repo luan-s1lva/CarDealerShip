@@ -1,4 +1,4 @@
-package br.com.luan.mk1.APPLICATION.CONTROLLER;
+package br.com.luan.mk1.APPLICATION.CONTROLLER.BRAND;
 
 import java.util.List;
 

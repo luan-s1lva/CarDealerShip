@@ -1,4 +1,4 @@
-package br.com.luan.mk1.APPLICATION.CONTROLLER;
+package br.com.luan.mk1.APPLICATION.CONTROLLER.BRAND;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,16 +8,16 @@ public class BrandFormController {
 
 	@GetMapping("/form/brand/create")
 	public String showFormCreate() {
-		return "formInsertBrand";
+		return "brand/formInsertBrand";
 	}
 	
 	@GetMapping("/form/brand/delete")
 	public String showFormDelete() {
-		return "formDeleteBrand";
+		return "brand/formDeleteBrand";
 	}
 	
 	@GetMapping("/form/brand/update")
 	public String showFormUpdate() {
-		return "formUpdateBrand";
+		return "brand/formUpdateBrand";
 	}
 }
