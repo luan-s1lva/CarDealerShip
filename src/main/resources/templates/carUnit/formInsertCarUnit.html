@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Insert Car Unit</title>
+</head>
+<body>
+    <h1>Insert Car Unit</h1>
+    <form action="/carUnit/store" method="post">
+		<input type="hidden" name="_method" value="post" />
+		
+		ID do Modelo: <input type="number" name="modelId"><br>
+        Preço: <input type="number" name="price"><br>
+        Cor: <input type="text" name="color"><br>
+		Ano: <input type="number" name="year"><br>
+        <button type="submit">Enviar</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Car Unit</title>
+</head>
+<body>
+    <h1>Update Car Unit</h1>
+    <form action="/carUnit/update" method="post">
+		<input type="hidden" name="_method" value="put" />
+		
+		ID do Modelo: <input type="number" name="modelId"><br>
+		ID da Unidade: <input type="number" name="unitId"><br>
+        Preço: <input type="number" name="price"><br>
+        Cor: <input type="text" name="color"><br>
+		Ano: <input type="number" name="year"><br>
+		Status: 		<select name="status">
+		    <option value="true">Ativo</option>
+		    <option value="false">Inativo</option>
+		  </select><br>
+        <button type="submit">Enviar</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete Car Unit</title>
+</head>
+<body>
+    <h1>delete Car Unit</h1>
+    <form action="/carUnit/delete" method="post">
+		<input type="hidden" name="_method" value="delete" />
+		
+		ID da Unidade: <input type="number" name="unitId"><br>
+        <button type="submit">Enviar</button>
+    </form>
+</body>
+</html>
