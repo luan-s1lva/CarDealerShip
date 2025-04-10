@@ -9,7 +9,6 @@ public class UpdateCarModelService implements UpdateCarModel{
 	private final CarModelRepository carModelRepo;
 
 	public UpdateCarModelService(CarModelRepository carModelRepo) {
-		super();
 		this.carModelRepo = carModelRepo;
 	}
 

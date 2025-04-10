@@ -28,6 +28,11 @@ public class BrandRepositoryImpl implements BrandRepository{
 	}
 
 	@Override
+	public Optional<Brand> findById(Long id) {
+		return jpaBrandRepo.findById(id);
+	}
+	
+	@Override
 	public Brand save(Brand brand) {
 		return jpaBrandRepo.save(brand);
 	}
@@ -49,5 +54,6 @@ public class BrandRepositoryImpl implements BrandRepository{
 		if (b.isEmpty() == true) return true;
 		else return false;
 	}
+
 
 }

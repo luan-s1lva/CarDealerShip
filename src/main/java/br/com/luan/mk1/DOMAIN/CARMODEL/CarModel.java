@@ -3,6 +3,8 @@ package br.com.luan.mk1.DOMAIN.CARMODEL;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import br.com.luan.mk1.DOMAIN.BRAND.Brand;
 import br.com.luan.mk1.DOMAIN.CARUNIT.CarUnit;
 import jakarta.persistence.Column;
@@ -24,6 +26,7 @@ public class CarModel {
 	
 	@ManyToOne(optional = false)
 	@JoinColumn(name = "brandId")
+	@JsonBackReference
 	private Brand brand;
 	
 	@Column(nullable = false)
@@ -37,7 +40,8 @@ public class CarModel {
 
 	public CarModel() {}
 
-	public CarModel(Brand brand, String name, String type) {
+	public CarModel(Long id, Brand brand, String name, String type) {
+		this.id = id;
 		this.brand = brand;
 		this.name = name;
 		this.type = type;
@@ -46,7 +50,7 @@ public class CarModel {
 	public Long getId() {
 		return id;
 	}
-
+	
 	public Brand getBrand() {
 		return brand;
 	}
@@ -70,6 +74,12 @@ public class CarModel {
 	public void setType(String type) {
 		this.type = type;
 	}
-	
-	
+
+	public List<CarUnit> getUnits() {
+		return units;
+	}
+
+	public void setUnits(List<CarUnit> units) {
+		this.units = units;
+	}
 }

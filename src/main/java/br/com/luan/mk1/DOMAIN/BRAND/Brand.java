@@ -2,6 +2,8 @@ package br.com.luan.mk1.DOMAIN.BRAND;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import br.com.luan.mk1.DOMAIN.CARMODEL.CarModel;
 
 import java.util.ArrayList;
@@ -20,6 +22,7 @@ public class Brand {
 	private String name;
 	
 	@OneToMany(mappedBy = "brand")
+	@JsonManagedReference
 	private List<CarModel> models = new ArrayList<>();
 	
 	public Brand() {}
