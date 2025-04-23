@@ -44,6 +44,10 @@ public class Customer {
 		return id;
 	}
 
+	public void setId(Long id) {
+		this.id = id;
+	}
+
 	public List<Purchase> getPurchases() {
 		return purchases;
 	}
@@ -75,6 +79,4 @@ public class Customer {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
-	
 }

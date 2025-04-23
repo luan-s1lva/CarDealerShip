@@ -11,4 +11,6 @@ public interface CustomerRepository {
 	boolean remove(Long customerId);
 	
 	Optional<Customer> retrieveById(Long customerId);
+	
+	Customer retrieveByEmail(String email);
 }
