@@ -46,4 +46,9 @@ public class CustomerRepositoryImpl implements CustomerRepository{
 		
 		return customer;
 	}
+
+	@Override
+	public Customer retrieveByEmail(String email) {
+		return jpaCustomerRepo.findByEmail(email);
+	}
 }
