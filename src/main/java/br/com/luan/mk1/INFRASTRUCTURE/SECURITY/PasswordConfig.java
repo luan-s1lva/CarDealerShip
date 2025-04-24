@@ -1,4 +1,4 @@
-package br.com.luan.mk1.CONFIG;
+package br.com.luan.mk1.INFRASTRUCTURE.SECURITY;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
