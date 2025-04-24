@@ -1,7 +1,5 @@
 package br.com.luan.mk1.DOMAIN.CUSTOMER;
 
-import java.util.Optional;
-
 public interface CustomerRepository {
 	
 	Customer save(Customer customer);
@@ -10,7 +8,7 @@ public interface CustomerRepository {
 	
 	boolean remove(Long customerId);
 	
-	Optional<Customer> retrieveById(Long customerId);
+	Customer retrieveById(Long customerId);
 	
 	Customer retrieveByEmail(String email);
 }
