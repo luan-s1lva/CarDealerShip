@@ -28,7 +28,7 @@ public class PurchaseSearchByDTORepositoryImpl implements PurchaseSearchByDTORep
 		CriteriaQuery<Purchase> criteriaQuery = criteriaBuilder.createQuery(Purchase.class);
 		Root<Purchase> purchase = criteriaQuery.from(Purchase.class);
 		
-		var customerData = purchase.join("customer", JoinType.INNER).join("carUnit", JoinType.INNER);
+		var customerData = purchase.join("customer", JoinType.INNER);
 		var carUnitData = purchase.join("carUnit", JoinType.INNER);
 		
 		List<Predicate> logicConditions = new ArrayList<>();

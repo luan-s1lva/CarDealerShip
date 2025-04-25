@@ -7,6 +7,7 @@
 <body>
     <h1>Deletar Brand</h1>
     <form action="/brand/delete" method="post">
+		<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
         ID da brand: <input type="number" name="brandId"><br>
         <button type="submit">Enviar</button>
     </form>

@@ -30,6 +30,7 @@ public class CarUnitRepositoryImpl implements CarUnitRepository{
 
 	@Override
 	public CarUnit save(CarUnit carUnit) {
+		carUnit.setStatus(true);
 		return jpaCarUnitRepo.save(carUnit);
 	}
 
@@ -48,5 +49,10 @@ public class CarUnitRepositoryImpl implements CarUnitRepository{
 		
 		if (car.isEmpty() == true) return true;
 		else return false;
+	}
+
+	@Override
+	public CarUnit retrieveById(Long id) {
+		return jpaCarUnitRepo.findById(id).get();
 	}
 }
