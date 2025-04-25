@@ -2,13 +2,15 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Cadastro de Brand</title>
+    <title>Delete Customer</title>
 </head>
 <body>
-    <h1>Cadastro de Brand</h1>
-    <form action="/brand/store" method="post">
+    <h1>delete Customer</h1>
+    <form action="/customer/delete" method="post">
 		<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
-        Nome da brand: <input type="text" name="name"><br>
+		<input type="hidden" name="_method" value="delete" />
+		
+		ID do Customer: <input type="number" name="customerId"><br>
         <button type="submit">Enviar</button>
     </form>
 </body>

@@ -47,6 +47,11 @@ public class CarModelRepositoryImpl implements CarModelRepository{
 		if (car.isEmpty() == true) return true;
 		else return false;
 	}
+
+	@Override
+	public Optional<CarModel> retrieveById(Long id) {
+		return jpaCarModelRepo.findById(id);
+	}
 	
 	
 }

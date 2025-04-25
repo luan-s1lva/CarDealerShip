@@ -2,6 +2,8 @@ package br.com.luan.mk1.DOMAIN.PURCHASE;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import br.com.luan.mk1.DOMAIN.CARUNIT.CarUnit;
 import br.com.luan.mk1.DOMAIN.CUSTOMER.Customer;
 import jakarta.persistence.Column;
@@ -23,10 +25,12 @@ public class Purchase {
 	
 	@OneToOne
 	@JoinColumn(name = "car_unit_id",nullable = false)
+	@JsonBackReference
 	private CarUnit carUnit;
 	
 	@ManyToOne(optional = false)
 	@JoinColumn(name = "customer_id",nullable = false)
+	@JsonBackReference
 	private Customer customer;
 	
 	@Column(nullable = false)

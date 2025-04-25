@@ -1,5 +1,7 @@
 package br.com.luan.mk1.DOMAIN.CARUNIT;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import br.com.luan.mk1.DOMAIN.CARMODEL.CarModel;
 import br.com.luan.mk1.DOMAIN.PURCHASE.Purchase;
 import jakarta.persistence.Column;
@@ -21,6 +23,7 @@ public class CarUnit {
 	
 	@ManyToOne(optional = false)
 	@JoinColumn(name = "modelId")
+	@JsonBackReference
 	private CarModel carModel;
 	
 	@OneToOne(mappedBy = "carUnit")
@@ -40,7 +43,9 @@ public class CarUnit {
 
 	public CarUnit() {}
 
-	public CarUnit(CarModel carModel, Purchase purchase, double price, String color, int year, boolean status) {
+	public CarUnit(Long id, CarModel carModel, Purchase purchase, double price, String color, int year,
+			boolean status) {
+		this.id = id;
 		this.carModel = carModel;
 		this.purchase = purchase;
 		this.price = price;
@@ -51,6 +56,10 @@ public class CarUnit {
 
 	public Long getId() {
 		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public CarModel getCarModel() {
@@ -100,6 +109,5 @@ public class CarUnit {
 	public void setStatus(boolean status) {
 		this.status = status;
 	}
-
 		
 }

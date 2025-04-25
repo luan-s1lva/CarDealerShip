@@ -2,17 +2,18 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Insert Car Model</title>
+    <title>Insert Car Unit</title>
 </head>
 <body>
-    <h1>Insert Car Model</h1>
-    <form action="/carModel/store" method="post">
+    <h1>Insert Car Unit</h1>
+    <form action="/carUnit/store" method="post">
 		<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
 		<input type="hidden" name="_method" value="post" />
 		
-		Nome da brand: <input type="type" name="brandName"><br>
-        Nome da Model: <input type="text" name="name"><br>
-        Tipo: <input type="text" name="type"><br>
+		ID do Modelo: <input type="number" name="modelId"><br>
+        Preço: <input type="number" name="price"><br>
+        Cor: <input type="text" name="color"><br>
+		Ano: <input type="number" name="year"><br>
         <button type="submit">Enviar</button>
     </form>
 </body>

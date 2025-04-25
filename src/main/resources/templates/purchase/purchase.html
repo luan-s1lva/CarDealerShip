@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <title>Make a purchase</title>
+</head>
+<body>
+  <h1>Purchase</h1>
+  <form th:action="@{/purchase/store}" method="post">
+	<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+    
+	<input type="number" name="customerId" placeholder="Customer ID" />
+    <input type="number" name="carUnitId" placeholder="carUnit ID" />
+    
+	<button type="submit">Buy!</button>
+  </form>
+</body>
+</html>

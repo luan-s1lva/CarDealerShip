@@ -10,6 +10,8 @@ public interface CarUnitRepository {
 	
 	List<CarUnit> retrieveByFilter(SearchCarUnitDTO searchCarUnitDTO);
 	
+	CarUnit retrieveById(Long id);
+	
 	CarUnit save(CarUnit carUnit);
 	
 	boolean update(CarUnit carUnit);

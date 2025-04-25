@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import br.com.luan.mk1.DOMAIN.BRAND.Brand;
 import br.com.luan.mk1.DOMAIN.CARUNIT.CarUnit;
@@ -36,6 +37,7 @@ public class CarModel {
 	private String type;
 	
 	@OneToMany(mappedBy = "carModel")
+	@JsonManagedReference
 	private List<CarUnit> units = new ArrayList<>();
 
 	public CarModel() {}

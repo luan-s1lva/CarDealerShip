@@ -22,7 +22,6 @@ public class CarModelController {
 	private final BrandRepository brandRepo;
 	
 	public CarModelController(CarModelRepository carModelRepo, BrandRepository brandRepo) {
-		super();
 		this.carModelRepo = carModelRepo;
 		this.brandRepo = brandRepo;
 	}

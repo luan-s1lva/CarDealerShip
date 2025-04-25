@@ -6,4 +6,5 @@ import br.com.luan.mk1.DOMAIN.CUSTOMER.Customer;
 
 public interface JpaCustomerRepository extends JpaRepository<Customer, Long>{
 
+	Customer findByEmail(String email);
 }
