@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete User</title>
+</head>
+<body>
+    <h1>delete User</h1>
+    <form action="/user/delete" method="post">
+		<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+		<input type="hidden" name="_method" value="delete" />
+		
+		ID do User: <input type="number" name="userId"><br>
+		Função: <select name="role">
+							<option value="employee">Employee</option>
+							  <option value="customer">Customer</option>
+						  </select>
+        <button type="submit">Enviar</button>
+    </form>
+</body>
+</html>

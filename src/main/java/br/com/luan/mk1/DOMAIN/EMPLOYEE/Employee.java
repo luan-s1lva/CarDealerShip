@@ -1,9 +1,5 @@
-package br.com.luan.mk1.DOMAIN.CUSTOMER;
+package br.com.luan.mk1.DOMAIN.EMPLOYEE;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import br.com.luan.mk1.DOMAIN.PURCHASE.Purchase;
 import br.com.luan.mk1.DOMAIN.ROLE.Role;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -11,23 +7,19 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "customers")
-public class Customer {
+@Table(name = "employees")
+public class Employee {
 
 	@Id
 	@GeneratedValue
 	private Long id;
 	
 	@ManyToOne
-	@JoinColumn(name = "role_id")
+	@JoinColumn(name = "role_id", nullable = false)
 	private Role role;
-	
-	@OneToMany(mappedBy = "customer")
-	private List<Purchase> purchases = new ArrayList<>();
 	
 	@Column(nullable = false)
 	private String name;
@@ -38,13 +30,14 @@ public class Customer {
 	@Column(nullable = false)
 	private String password;
 
-	public Customer() {}
+	public Employee() {
+		super();
+	}
 
-	public Customer(Long id, Role role, List<Purchase> purchases, String name, String email, String password) {
+	public Employee(Long id, Role role, String name, String email, String password) {
 		super();
 		this.id = id;
 		this.role = role;
-		this.purchases = purchases;
 		this.name = name;
 		this.email = email;
 		this.password = password;
@@ -64,14 +57,6 @@ public class Customer {
 
 	public void setRole(Role role) {
 		this.role = role;
-	}
-
-	public List<Purchase> getPurchases() {
-		return purchases;
-	}
-
-	public void setPurchases(List<Purchase> purchases) {
-		this.purchases = purchases;
 	}
 
 	public String getName() {

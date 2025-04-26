@@ -34,8 +34,8 @@ public class BrandController {
     }
 	
 	@PostMapping("/brand/delete")
-	public boolean delete(Long brandId) {
-		return brandRepo.remove(brandId);
+	public void delete(Long brandId) {
+		brandRepo.remove(brandId);
 	}
 
 	@PutMapping("brand/update")

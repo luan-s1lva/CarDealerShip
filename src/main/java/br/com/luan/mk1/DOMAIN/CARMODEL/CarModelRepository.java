@@ -1,21 +1,20 @@
 package br.com.luan.mk1.DOMAIN.CARMODEL;
 
 import java.util.List;
-import java.util.Optional;
 
-import br.com.luan.mk1.APPLICATION.DTO.CarModelSearchDTO;
+import br.com.luan.mk1.APPLICATION.DTO.SearchCarModelDTO;
 
 public interface CarModelRepository {
 
 	List<CarModel> retrieveAll();
 	
-	List<CarModel> retrieveByFilter(CarModelSearchDTO car);
+	List<CarModel> retrieveByFilter(SearchCarModelDTO car);
 	
-	Optional<CarModel> retrieveById(Long id);
+	CarModel retrieveById(Long id);
 	
 	CarModel save(CarModel carModel);
 	
-	CarModel update(CarModel carModel);
+	boolean update(CarModel carModel);
 	
-	boolean remove(Long carModelId);
+	void remove(Long carModelId);
 }

@@ -7,6 +7,8 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.csrf.HttpSessionCsrfTokenRepository;
 
 import br.com.luan.mk1.APPLICATION.CUSTOMER.AuthenticateCustomerService;
+import br.com.luan.mk1.DOMAIN.CUSTOMER.CustomerRepository;
+import br.com.luan.mk1.DOMAIN.EMPLOYEE.EmployeeRepository;
 
 @Configuration
 public class SecurityConfig {
@@ -24,8 +26,8 @@ public class SecurityConfig {
 						"/images/**", 
 						"/login",
 						"/logout",
-						"/form/customer/create",
-						"/customer/store"
+						"/form/user/create",
+						"/user/store"
 						)
 				.permitAll()
 				.anyRequest().authenticated()
@@ -46,5 +48,10 @@ public class SecurityConfig {
 			);
 		
 		return http.build();
+	}
+	
+	@Bean
+	public AuthenticateCustomerService authenticateCustomerService(CustomerRepository customerRepo, EmployeeRepository employeeRepo) {
+		return new AuthenticateCustomerService(customerRepo, employeeRepo);
 	}
 }
