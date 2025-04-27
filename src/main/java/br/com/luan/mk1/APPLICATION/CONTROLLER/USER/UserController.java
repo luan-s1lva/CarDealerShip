@@ -1,5 +1,6 @@
 package br.com.luan.mk1.APPLICATION.CONTROLLER.USER;
 
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -29,13 +30,25 @@ public class UserController {
 		this.employeeRepo = employeeRepo;
 		this.roleRepo = roleRepo;
 	}
+	
+	public boolean isEmailNotInUse(String email) {
+		Customer customer = customerRepo.retrieveByEmail(email);
+		Employee empl = employeeRepo.findbyEmail(email);
+		
+		if (empl == null && customer == null) return true;
+		else return false;
+	}
 
 	@PostMapping("/user/store")
 	public void store(@RequestParam String role, @RequestParam String name, @RequestParam String email, @RequestParam String password) {
-		if (role.equalsIgnoreCase("customer")) {
-			storeCustomer(role, name, email, password);
-		} else if (role.equalsIgnoreCase("employee")) {
-			storeEmployee(role, name, email, password);
+		if (isEmailNotInUse(email)) {
+			if (role.equalsIgnoreCase("customer")) {
+				storeCustomer(role, name, email, password);
+			} else if (role.equalsIgnoreCase("employee")) {
+				storeEmployee(role, name, email, password);
+			}
+		} else {
+			throw new DuplicateKeyException("Email já está em uso");
 		}
 	}
 	
@@ -71,25 +84,32 @@ public class UserController {
 	}
 	
 	public Employee updateEmployee(String role, String userId, String name, String email, String password) {
-		Employee empl = new Employee();
+		Employee empl = employeeRepo.findbyId(Long.parseLong(userId));
 		
-		empl.setId(Long.parseLong(userId));
-		empl.setName(name);
-		empl.setEmail(email);
-		empl.setPassword(passEncoder.encode(password));
-		
-		return employeeRepo.save(empl);
+		if (empl != null) {
+			empl.setName(name);
+			empl.setEmail(email);
+			empl.setPassword(passEncoder.encode(password));
+			
+			return employeeRepo.save(empl);			
+		} else {
+			throw new RuntimeException("Empregado não encontrado");
+		}
 	}
 	
 	public Customer updateCustomer(String role, String userId, String name, String email, String password) {
-		Customer customer = new Customer();
+		Customer customer = customerRepo.retrieveById(Long.parseLong(userId));
 		
-		customer.setId(Long.parseLong(userId));
-		customer.setName(name);
-		customer.setEmail(email);
-		customer.setPassword(passEncoder.encode(password));
+		if (customer != null) {
+			customer.setName(name);
+			customer.setEmail(email);
+			customer.setPassword(passEncoder.encode(password));
+			
+			return customerRepo.save(customer);			
+		} else {
+			throw new RuntimeException("Cliente não encontrado");
+		}
 		
-		return customerRepo.save(customer);
 	}
 
 	@DeleteMapping("/user/delete")
