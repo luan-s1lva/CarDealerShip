@@ -3,6 +3,7 @@ package br.com.luan.mk1.APPLICATION.CONTROLLER.PURCHASE;
 import java.util.Date;
 import java.util.List;
 
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -51,6 +52,11 @@ public class PurchaseController {
 		} else {
 			return new Purchase();
 		}
+	}
+	
+	@DeleteMapping("/purchase/delete")
+	public void delete(@RequestParam String purchaseId) {
+		purchaseRepo.remove(Long.parseLong(purchaseId));
 	}
 }
 

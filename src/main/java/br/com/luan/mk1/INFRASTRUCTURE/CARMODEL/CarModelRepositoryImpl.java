@@ -1,11 +1,10 @@
 package br.com.luan.mk1.INFRASTRUCTURE.CARMODEL;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.stereotype.Repository;
 
-import br.com.luan.mk1.APPLICATION.DTO.CarModelSearchDTO;
+import br.com.luan.mk1.APPLICATION.DTO.SearchCarModelDTO;
 import br.com.luan.mk1.DOMAIN.CARMODEL.CarModel;
 import br.com.luan.mk1.DOMAIN.CARMODEL.CarModelRepository;
 
@@ -24,34 +23,31 @@ public class CarModelRepositoryImpl implements CarModelRepository{
 	}
 
 	@Override
-	public List<CarModel> retrieveByFilter(CarModelSearchDTO car) {
-		return jpaCarModelRepo.retrieveByFilter(car);
-	}
-
-	@Override
 	public CarModel save(CarModel carModel) {
 		return jpaCarModelRepo.save(carModel);
 	}
 
 	@Override
-	public CarModel update(CarModel carModel) {
-		return jpaCarModelRepo.save(carModel);
-	}
-
-	@Override
-	public boolean remove(Long carModelId) {
-		jpaCarModelRepo.deleteById(carModelId);
+	public boolean update(CarModel carModel) {
+		CarModel model = jpaCarModelRepo.save(carModel);
 		
-		Optional<CarModel> car = jpaCarModelRepo.findById(carModelId);
-		
-		if (car.isEmpty() == true) return true;
+		if (model != null) return true;
 		else return false;
 	}
 
 	@Override
-	public Optional<CarModel> retrieveById(Long id) {
-		return jpaCarModelRepo.findById(id);
+	public void remove(Long carModelId) {
+		jpaCarModelRepo.deleteById(carModelId);
 	}
-	
+
+	@Override
+	public List<CarModel> retrieveByFilter(SearchCarModelDTO car) {
+		return jpaCarModelRepo.retrieveByFilter(car);
+	}
+
+	@Override
+	public CarModel retrieveById(Long id) {
+		return jpaCarModelRepo.findById(id).get();
+	}	
 	
 }

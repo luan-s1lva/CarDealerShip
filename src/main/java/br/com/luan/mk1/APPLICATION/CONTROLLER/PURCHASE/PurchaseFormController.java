@@ -10,4 +10,9 @@ public class PurchaseFormController {
 	public String showFormCreate() {
 		return "purchase/purchase";
 	}
+	
+	@GetMapping("/form/purchase/delete")
+	public String showFormDelete() {
+		return "purchase/formDeletePurchase";
+	}
 }

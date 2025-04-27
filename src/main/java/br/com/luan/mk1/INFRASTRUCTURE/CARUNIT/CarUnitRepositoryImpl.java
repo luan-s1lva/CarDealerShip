@@ -1,7 +1,6 @@
 package br.com.luan.mk1.INFRASTRUCTURE.CARUNIT;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.stereotype.Repository;
 
@@ -43,12 +42,8 @@ public class CarUnitRepositoryImpl implements CarUnitRepository{
 	}
 
 	@Override
-	public boolean remove(Long carUnitId) {
+	public void remove(Long carUnitId) {
 		jpaCarUnitRepo.deleteById(carUnitId);
-		Optional<CarUnit> car = jpaCarUnitRepo.findById(carUnitId);
-		
-		if (car.isEmpty() == true) return true;
-		else return false;
 	}
 
 	@Override

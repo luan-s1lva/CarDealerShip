@@ -1,10 +1,8 @@
 package br.com.luan.mk1.INFRASTRUCTURE.BRAND;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.stereotype.Repository;
-
 import br.com.luan.mk1.DOMAIN.BRAND.Brand;
 import br.com.luan.mk1.DOMAIN.BRAND.BrandRepository;
 
@@ -26,11 +24,6 @@ public class BrandRepositoryImpl implements BrandRepository{
 	public List<Brand> findByName(String name) {
 		return jpaBrandRepo.findByNameContainingIgnoreCase(name);
 	}
-
-	@Override
-	public Optional<Brand> findById(Long id) {
-		return jpaBrandRepo.findById(id);
-	}
 	
 	@Override
 	public Brand save(Brand brand) {
@@ -46,14 +39,12 @@ public class BrandRepositoryImpl implements BrandRepository{
 	}
 
 	@Override
-	public boolean remove(Long brandId) {
+	public void remove(Long brandId) {
 		jpaBrandRepo.deleteById(brandId);
-		
-		Optional<Brand> b = jpaBrandRepo.findById(brandId);
-		
-		if (b.isEmpty() == true) return true;
-		else return false;
 	}
 
-
+	@Override
+	public Brand findById(Long id) {
+		return jpaBrandRepo.findById(id).get();
+	}
 }
