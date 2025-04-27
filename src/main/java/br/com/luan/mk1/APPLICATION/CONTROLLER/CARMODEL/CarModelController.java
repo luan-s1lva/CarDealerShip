@@ -1,7 +1,6 @@
 package br.com.luan.mk1.APPLICATION.CONTROLLER.CARMODEL;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -51,23 +50,16 @@ public class CarModelController {
     }
 	
 	@DeleteMapping("/carModel/delete")
-	public boolean delete(@RequestParam Long modelId) {
-		return carModelRepo.remove(modelId);
+	public void delete(@RequestParam Long modelId) {
+		carModelRepo.remove(modelId);
 	}
 
 	@PutMapping("carModel/update")
 	public boolean update(@RequestParam Long brandId, @RequestParam Long modelId, @RequestParam String name, @RequestParam String type) {
-		Optional<Brand> brand = brandRepo.findById(brandId);
+		Brand brand = brandRepo.findById(brandId);
 		
-		if (brand.isPresent() == true) {
-			Brand b = brand.get();
-			
-			CarModel c = new CarModel(modelId,b, name, type);
-			
-			CarModel carModel = carModelRepo.update(c);
-			
-			if (carModel != null) return true;
-			else return false;
+		if (brand != null) {
+			return carModelRepo.update(new CarModel(modelId, brand, name, type));
 		} else {
 			return false;
 		}

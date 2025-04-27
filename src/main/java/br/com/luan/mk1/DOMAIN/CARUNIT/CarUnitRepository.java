@@ -16,5 +16,5 @@ public interface CarUnitRepository {
 	
 	boolean update(CarUnit carUnit);
 	
-	boolean remove(Long carUnitId);
+	void remove(Long carUnitId);
 }

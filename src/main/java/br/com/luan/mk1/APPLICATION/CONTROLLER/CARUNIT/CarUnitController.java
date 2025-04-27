@@ -9,7 +9,6 @@ import br.com.luan.mk1.DOMAIN.CARUNIT.CarUnit;
 import br.com.luan.mk1.DOMAIN.CARUNIT.CarUnitRepository;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -43,13 +42,13 @@ public class CarUnitController {
 	
 	@PostMapping("/carUnit/store")
 	public CarUnit store(@RequestParam String modelId, @RequestParam String price, @RequestParam String color, @RequestParam String year) {
-		Optional<CarModel> model = carModelRepo.retrieveById(Long.parseLong(modelId));
+		CarModel model = carModelRepo.retrieveById(Long.parseLong(modelId));
 		
 		CarUnit carUnit = new CarUnit();
 		
 		carUnit.setColor(color);
 		carUnit.setPrice(Double.parseDouble(price));
-		carUnit.setCarModel(model.get());
+		carUnit.setCarModel(model);
 		carUnit.setStatus(true);
 		carUnit.setYear(Integer.parseInt(year));
 		
@@ -60,14 +59,14 @@ public class CarUnitController {
 	
 	@PutMapping("/carUnit/update")
 	public boolean update(@RequestParam String modelId, @RequestParam String unitId, @RequestParam String price, @RequestParam String color, @RequestParam String year, @RequestParam String status) {		
-		Optional<CarModel> model = carModelRepo.retrieveById(Long.parseLong(modelId));
+		CarModel model = carModelRepo.retrieveById(Long.parseLong(modelId));
 		
 		CarUnit carUnit = new CarUnit();
 		
 		carUnit.setId(Long.parseLong(unitId));
 		carUnit.setColor(color);
 		carUnit.setPrice(Double.parseDouble(price));
-		carUnit.setCarModel(model.get());
+		carUnit.setCarModel(model);
 		carUnit.setStatus(Boolean.parseBoolean(status));
 		carUnit.setYear(Integer.parseInt(year));
 		
@@ -75,7 +74,7 @@ public class CarUnitController {
 	}
 	
 	@DeleteMapping("/carUnit/delete")
-	public boolean delete(@RequestParam String unitId) {		
-		return carUnitRepo.remove(Long.parseLong(unitId));
+	public void delete(@RequestParam String unitId) {		
+		carUnitRepo.remove(Long.parseLong(unitId));
 	}
 }

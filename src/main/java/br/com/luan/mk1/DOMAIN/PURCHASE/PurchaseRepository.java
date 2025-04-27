@@ -12,4 +12,6 @@ public interface PurchaseRepository {
 	List<Purchase> returnAll();
 	
 	List<Purchase> returnByFilter(CustomerSearchDTO customerDTO, SearchCarUnitDTO carUnitDTO);
+	
+	void remove(Long purchaseId);
 }
